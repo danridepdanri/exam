@@ -67,6 +67,20 @@ bool add() {
 	return true;
 }
 bool see() {
+	ifstream file("output.json"); // файл из которого читаем (для линукс путь будет выглядеть по другому)
+	string jsonString;
+	int i = 0;
+	while (getline(file, jsonString)) { // пока не достигнут конец файла класть очередную строку в переменную (s)
+		json object = json::parse(jsonString);
+		string type = object["type"].get<string>();
+		string content = object["content"].get<string>();
+		string time = object["time"].get<string>();
+		i++;
+		cout << "Задача " << i << ":" << "Тип: " << type << " Содержимое: " << content << " Время выполнения: " << time << ";" << endl;
+		
+	}
+
+	file.close();
 	return true;
 }
 bool deleted() {
@@ -74,6 +88,7 @@ bool deleted() {
 	int dell;
 	cout << "Введите номер строки для удаления : ";
 	cin >> dell;
+	dell = dell - 1;
 	ifstream file("output.json");
 	if (file.is_open())
 	{
@@ -131,12 +146,7 @@ bool menu() {
 	cin >> x;
 	if (x == 1) {
 		add();
-		cout << "Для возвращения в меню нажмите 1: ";
-		cin >> y;
-		if (y == 1) {
-			menu();
-
-		}
+		
 	}
 	else if (x == 2) {
 		settings();
