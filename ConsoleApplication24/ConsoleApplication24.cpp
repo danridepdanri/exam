@@ -2,6 +2,9 @@
 #include <nlohmann/json.hpp>
 #include <ctime>
 #include <fstream>
+#include <stdlib.h>
+#include <cstdlib>
+
 
 using namespace std;
 using namespace nlohmann;
@@ -64,6 +67,7 @@ bool add() {
 	ofstream o("output.json", ios::app);
 	o << j << endl;
 	o.close();
+	
 	return true;
 }
 bool see() {
@@ -84,6 +88,7 @@ bool see() {
 	return true;
 }
 bool deleted() {
+	see();
 	vector<string> vec;
 	int dell;
 	cout << "Введите номер строки для удаления : ";
@@ -113,12 +118,14 @@ bool deleted() {
 }
 
 bool settings() {
-	cout << "Вы вошли в настройки. Доступные настройки:\n1) Посмотреть все поставленные задачи\n2) Удалить задачу" << endl;
+	cout << "Вы вошли в настройки. Доступные настройки:\n1) Посмотреть все поставленные задачи\n2) Удалить задачу\n3) Добавить задачу\nЗакрыть приложение" << endl;
 	int x;
 	int y;
 	cin >> x;
 	if (x == 1) {
+		system("cls");
 		see();
+		
 		cout << "Для возвращения в настройки нажмите 1: ";
 		cin >> y;
 		if (y == 1) {
@@ -127,35 +134,74 @@ bool settings() {
 		}
 	}
 	else if (x == 2) {
+		system("cls");
 		deleted();
+		
 		cout << "Для возвращения в настройки нажмите 1: ";
 		cin >> y;
 		if (y == 1) {
 			settings();
 		
 		}
+	}
+	else if (x == 3) {
+		system("cls");
+		add();
+
+		cout << "Для возвращения в настройки нажмите 1: ";
+		cin >> y;
+		if (y == 1) {
+			settings();
+
+		}
+	
+	}
+	else if (x == 4) {
+		exit;
+	}
+	else {
+		system("cls");
+		settings();
 	}
 	
 
 	return true;
 }
 bool menu() {
-	cout << "Добро пожаловать в круто код 2017. Cписок доступных операций: \n1) Добавление задачи\n2) Настройки текущих задач" << endl;
+	cout << "Добро пожаловать в круто код 2017. Cписок доступных операций: \n1) Добавление задачи\n2) Настройки текущих задач\n3) Закрыть приложение" << endl;
 	int x;
 	int y;
 	cin >> x;
 	if (x == 1) {
+		system("cls");
 		add();
 		
+		cout << "Для возвращения в меню нажмите 1: ";
+		int x;
+		cin >> x;
+		if (x == 1) {
+			menu();
+
+		}
 	}
 	else if (x == 2) {
+		system("cls");
 		settings();
+		system("cls");
 		cout << "Для возвращения в меню нажмите 1: ";
 		cin >> y;
 		if (y == 1) {
 			menu();
 
 		}
+	}
+	else if (x == 3) {
+		exit;
+		
+	}
+	else {
+		system("cls");
+		menu();
 	}
 	
 
@@ -164,7 +210,4 @@ bool menu() {
 int main() {
 	setlocale(LC_ALL, "Russian_Russia.1251");
 	menu();
-	/*add();*/
-	/*see();*/
-	/*deleted();*/
 }
