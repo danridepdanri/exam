@@ -1,0 +1,17 @@
+I:\Repositores\C#\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.exe
+I:\Repositores\C#\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.deps.json
+I:\Repositores\C#\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.runtimeconfig.json
+I:\Repositores\C#\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.dll
+I:\Repositores\C#\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.pdb
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.csproj.AssemblyReference.cache
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.Form1.resources
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.csproj.GenerateResource.cache
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.GeneratedMSBuildEditorConfig.editorconfig
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.AssemblyInfoInputs.cache
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.AssemblyInfo.cs
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.csproj.CoreCompileInputs.cache
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.dll
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\refint\EXAM.dll
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.pdb
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.genruntimeconfig.cache
+I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\ref\EXAM.dll
