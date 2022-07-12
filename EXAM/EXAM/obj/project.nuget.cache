@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Fg26mMAK3GF79jjiKl9nkgXk2dE1mVtN7YaYxSkW9qrhwE3lZWx1ZfQ151PJFub/aRdQcS/l3P7Uk/JMCB8ifA==",
+  "dgSpecHash": "QscNoIVb4P0JA7ayMBWFBtn+I0Q2hvgM5V91uFKSThR1vvrxnWr6VnxhFPH2c3G0B/AujRULVfz/Zn7kecFRjA==",
   "success": true,
-  "projectFilePath": "I:\\Repositores\\C#\\EXAM\\EXAM\\EXAM.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\artem\\Desktop\\Новая папка\\exam\\exam\\EXAM\\EXAM\\EXAM.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\artem\\.nuget\\packages\\xamarin.forms\\5.0.0.2478\\xamarin.forms.5.0.0.2478.nupkg.sha512"
+  ],
   "logs": []
 }

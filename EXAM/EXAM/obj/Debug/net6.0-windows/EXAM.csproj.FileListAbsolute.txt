@@ -15,3 +15,25 @@ I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\refint\EXAM.dll
 I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.pdb
 I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.genruntimeconfig.cache
 I:\Repositores\C#\EXAM\EXAM\obj\Debug\net6.0-windows\ref\EXAM.dll
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.exe
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.deps.json
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.runtimeconfig.json
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.dll
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\bin\Debug\net6.0-windows\EXAM.pdb
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.csproj.AssemblyReference.cache
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.Form1.resources
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.csproj.GenerateResource.cache
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.AssemblyInfoInputs.cache
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.AssemblyInfo.cs
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.csproj.CoreCompileInputs.cache
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.dll
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\refint\EXAM.dll
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.pdb
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.genruntimeconfig.cache
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\ref\EXAM.dll
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.addForm.resources
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\bin\Debug\net6.0-windows\Xamarin.Forms.Core.dll
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\bin\Debug\net6.0-windows\Xamarin.Forms.Platform.dll
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\bin\Debug\net6.0-windows\Xamarin.Forms.Xaml.dll
+C:\Users\artem\Desktop\Новая папка\exam\exam\EXAM\EXAM\obj\Debug\net6.0-windows\EXAM.csproj.CopyComplete

@@ -1,76 +1,58 @@
+using System.Diagnostics;
+
 namespace EXAM
 {
     public partial class Form1 : Form
     {
-   
-        private Executer Executer = new Executer();
+
+        private Executor _executor = new Executor();
         private string pathToJSON = "user.json";
-       
+
         public Form1()
         {
             InitializeComponent();
 
+            _executor.Init(pathToJSON); // инициализируем выполнятор со списком планов
+
+            /*  события по сворачиванию и разворачиванию в трее
+             *
+             */
             ExecuterIcon.Visible = false;
             this.ExecuterIcon.MouseDoubleClick += new MouseEventHandler(ExecuterIcon_MouseDoubleClick);
             this.Resize += new EventHandler(this.Form1_Resize);
             TimerEX.Tick += TimerEX_Tick;
 
-            TimerEX.Start();
+            TimerEX.Start(); // запуск таймера
 
-            listView_Plans.Items.Clear();
+            listView_Plans.Items.Clear();           
             listView_Plans.View = View.Details;
 
 
-            for (int i = 0; i < Executer.GetPlans(pathToJSON).Count; i++)
-            {
-                ListViewItem item = new ListViewItem(Executer.GetPlans(pathToJSON)[i].Content);
-                item.SubItems.Add(Executer.GetPlans(pathToJSON)[i].Time.ToString());
-
-                listView_Plans.Items.Add(item);
-
-            }
-
-            //listBox_Plans.Items.Clear();
-            //for (int i = 0; i < Executer.GetPlans(pathToJSON).Count; i++)
-            //{
-            //    listBox_Plans.Items.Add(Executer.GetPlans(pathToJSON)[i].Content +"\t" + Executer.GetPlans(pathToJSON)[i].Time.ToShortTimeString());
-
-            //}
-
-
-        }
-
-        private void Execude(List<Plan> plans)
-        {
-
-            if (plans.Count > 0)
+            for (int i = 0; i < _executor.GetPlans().Count; i++)
             {
 
-                for (int i = 0; i < plans.Count; i++)
+                if (_executor.GetPlans()[i].Time.Date == DateTime.Now.Date) // В ListView грузим только те что запланированы на сегодня
                 {
-                    if (plans[i].Time < DateTime.Now)
-                    {
-                        label2.Text = plans[i].Content;
-                        label3.Text = plans[i].Time.ToShortDateString();
-                        plans.Remove(plans[i]);
-                        // plans = plans;
-                    }
-                    //  return;
 
+                    ListViewItem item;
+                    if (_executor.GetPlans()[i].Type == "Load")
+                    {
+                        item = new ListViewItem(_executor.GetPlans()[i].Type);
+                        item.SubItems.Add(Path.GetFileNameWithoutExtension(_executor.GetPlans()[i].Content));
+                        item.SubItems.Add(_executor.GetPlans()[i].Time.ToString());
+                    }
+                    else
+                    {
+                        item = new ListViewItem(_executor.GetPlans()[i].Type);
+                        item.SubItems.Add(_executor.GetPlans()[i].Content);
+                        item.SubItems.Add(_executor.GetPlans()[i].Time.ToString());
+                    }
+
+                    listView_Plans.Items.Add(item);
                 }
             }
-            else
-            {
-
-                return;
-            }
         }
-
-        private void TimerEX_Tick1(object? sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
+        // сворачивание в трей
         private void Form1_Resize(object sender, EventArgs e)
         {
 
@@ -83,22 +65,39 @@ namespace EXAM
                 ExecuterIcon.ShowBalloonTip(5000); // Параметром указываем количество миллисекунд, которое будет показываться подсказка
             }
         }
-
+        //разворачиваем из трея
         private void ExecuterIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
-            ExecuterIcon.Visible=false;
+            ExecuterIcon.Visible = false;
             WindowState = FormWindowState.Normal;
 
         }
 
+        // режим работы таймера
         private void TimerEX_Tick(object sender, EventArgs e)
         {
-            Execude(Executer.GetPlans(pathToJSON));
+            if (WindowState == FormWindowState.Minimized)
+            {
+                this.Show();
+                ExecuterIcon.Visible = false;
+                WindowState = FormWindowState.Normal;
+            }
+            TimerEX.Interval = 30000;
+            _executor.Execude(_executor.GetPlans());
         }
-
-       
+        //при закрытии программы перезаписываем JSON
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _executor.ReWretiter(_executor.GetPlans());
+        }
+        // тут еще работаю
+        private void btnADD_Click(object sender, EventArgs e)
+        {
+            addForm addForm = new addForm(this);
+            addForm.Show();
+        }
     }
 
-    
+
 }

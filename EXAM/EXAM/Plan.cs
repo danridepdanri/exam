@@ -11,7 +11,6 @@ namespace EXAM
 
         public string Type { get; }
         public string Content { get; set; }
-
         public DateTime Time { get; set; }
         public Plan(string type, string content, DateTime time)
         {
@@ -19,6 +18,8 @@ namespace EXAM
             Content = content;
             Time = time;
         }
+        
+
         /*
         private string Type;
         private string Content;
