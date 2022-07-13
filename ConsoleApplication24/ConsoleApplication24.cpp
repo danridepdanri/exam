@@ -427,7 +427,7 @@ bool Data() {
 bool add() {
 	string type, content, time;
 	
-	cout << "Выберите тип операции:\n1) Запустить приложение\n2) Включить напоминаниe\n3) Включить звуковое оповещение\n4)Остановить программу" << endl;
+	cout << "Выберите тип операции:\n1) Запустить приложение\n2) Включить напоминаниe\n4)Остановить программу" << endl;
 	cout << "Ваш выбор: ";
 	int key = 0;
 	cin >> key;
@@ -447,6 +447,9 @@ bool add() {
 		cout << "Введите дату в формате [2022-07-08 18:30:25]:";
 		cout << endl;
 		Data();
+	}
+	else if (key == 4) {
+		exit;
 	}
 	else {
 		system("cls");
@@ -492,7 +495,7 @@ bool see() {
 		string content = object["content"].get<string>();
 		string time = object["time"].get<string>();
 		i++;
-		//cout << "Задача " << i << ":" << "Тип: " << type << " Содержимое: " << content << " Время выполнения: " << time << ";" << endl;
+		cout << "Задача " << i << ":" << "Тип: " << type << " Содержимое: " << content << " Время выполнения: " << time << ";" << endl;
 		
 	}
 
@@ -530,12 +533,12 @@ bool deleted() {
 }
 
 bool settings() {
-	cout << "Вы вошли в настройки. Доступные настройки:\n1) Посмотреть все поставленные задачи\n2) Удалить задачу\n3) Добавить задачу\n4)Закрыть приложение" << endl;
+	cout << "Вы вошли в настройки. Доступные настройки:\n1) Посмотреть все поставленные задачи\n2) Удалить задачу\n3) Добавить задачу\n0)Закрыть" << endl;
 	int x;
 	int y;
 	cin >> x;
 	if (x == 1) {
-		system("cls");
+		
 		see();
 		
 		cout << "Для возвращения в настройки нажмите 1: ";
@@ -552,6 +555,7 @@ bool settings() {
 		cout << "Для возвращения в настройки нажмите 1: ";
 		cin >> y;
 		if (y == 1) {
+			system("cls");
 			settings();
 		
 		}
@@ -568,7 +572,7 @@ bool settings() {
 		}
 	
 	}
-	else if (x == 4) {
+	else if (x == 0) {
 		exit;
 	}
 	else {
@@ -592,6 +596,7 @@ bool menu() {
 		int x;
 		cin >> x;
 		if (x == 1) {
+			system("cls");
 			menu();
 
 		}
@@ -599,10 +604,11 @@ bool menu() {
 	else if (x == 2) {
 		system("cls");
 		settings();
-		system("cls");
+		
 		cout << "Для возвращения в меню нажмите 1: ";
 		cin >> y;
 		if (y == 1) {
+			system("cls");
 			menu();
 
 		}
