@@ -1,5 +1,6 @@
 ﻿  ConsoleApplication24.cpp
-C:\Users\Admin\source\repos\ConsoleApplication24\ConsoleApplication24\ConsoleApplication24.cpp(104,18): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\source\repos\ConsoleApplication24\ConsoleApplication24\ConsoleApplication24.cpp(160,3): warning C4551: в вызове функции отсутствует список аргументов
-C:\Users\Admin\source\repos\ConsoleApplication24\ConsoleApplication24\ConsoleApplication24.cpp(195,3): warning C4551: в вызове функции отсутствует список аргументов
+C:\Users\Admin\source\repos\ConsoleApplication24\ConsoleApplication24\ConsoleApplication24.cpp(28,13): warning C4101: buf: неиспользованная локальная переменная
+C:\Users\Admin\source\repos\ConsoleApplication24\ConsoleApplication24\ConsoleApplication24.cpp(528,18): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\source\repos\ConsoleApplication24\ConsoleApplication24\ConsoleApplication24.cpp(584,3): warning C4551: в вызове функции отсутствует список аргументов
+C:\Users\Admin\source\repos\ConsoleApplication24\ConsoleApplication24\ConsoleApplication24.cpp(623,3): warning C4551: в вызове функции отсутствует список аргументов
   ConsoleApplication24.vcxproj -> C:\Users\Admin\source\repos\ConsoleApplication24\Debug\ConsoleApplication24.exe

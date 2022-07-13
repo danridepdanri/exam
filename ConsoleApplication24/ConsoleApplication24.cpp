@@ -1,9 +1,14 @@
 ﻿#include <iostream>
 #include <nlohmann/json.hpp>
+#include <stdio.h>
+#include <time.h>
 #include <ctime>
 #include <fstream>
 #include <stdlib.h>
-#include <cstdlib>
+#pragma warning(disable:4996)
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
 
 
 using namespace std;
@@ -17,8 +22,411 @@ public:
 
 
 };
+bool Data() {
+	time_t     now;
+	struct tm* ts;
+	char       buf[80];
+
+
+	time(&now);
+
+
+	ts = localtime(&now);
+	int year, month, day, hour, minute, sec;
+
+	cout << "Введите год: ";
+	cin >> year;
+	if (year < (ts->tm_year + 1900)) {
+		cout << "Этот год уже прошел" << endl;
+		Data();
+	}
+	else {
+		cout << "Введите месяц: ";
+		cin >> month;
+		if (year == (ts->tm_year + 1900) && month < (ts->tm_mon)) {
+			cout << "Этот месяц уже прошел" << endl;
+			Data();
+
+		}
+		else if (year >= (ts->tm_year + 1900)) {
+			cout << "Введите день: ";
+			cin >> day;
+			if (day > 31 || day < 0) {
+				cout << "Не правильный день" << endl;
+				Data();
+
+			}
+			else {
+				cout << "Введите часы: ";
+				cin >> hour;
+				if (hour > 24 || hour < 0) {
+					cout << "Не правильное время" << endl;
+					Data();
+
+				}
+				else {
+					cout << "Введите минуты: ";
+					cin >> minute;
+					if (minute < 0 || minute > 59) {
+						cout << "Не правильное время" << endl;
+						Data();
+
+					}
+					else {
+						cout << "Введите секунды:";
+						cin >> sec;
+						if (sec < 0 || sec > 59) {
+							cout << "Не правильное время" << endl;
+							Data();
+
+						}
+						else {
+							cout << "Вы закончили вводить время" << endl;
+						}
+					}
+
+				}
+			}
+		}
+		else if (year == (ts->tm_year + 1900) && month == (ts->tm_mon) && month > 0 && month <= 12) {
+			cout << "Введите день: ";
+			cin >> day;
+			if (day < ts->tm_mday) {
+				cout << "Не правильный день" << endl;
+				Data();
+			}
+			else if (day >= ts->tm_mday && day <= 31) {
+				cout << "Введите часы: ";
+				cin >> hour;
+				if (hour < ts->tm_hour) {
+					cout << "Не правильный час" << endl;
+					Data();
+				}
+				else if (hour >= ts->tm_hour && hour <= 23) {
+					cout << "Введите минуты: ";
+					cin >> minute;
+					if (minute < ts->tm_min) {
+						cout << "Не правильная минута" << endl;
+						Data();
+					}
+					else if (minute > ts->tm_min && minute <= 59) {
+						cout << "Введите секунды: ";
+						cin >> sec;
+						if (sec < 0 || sec >= 59) {
+							cout << "Не правильные секунды" << endl;
+							Data();
+						}
+					}
+
+				}
+
+			}
+		}
+		else if (year == (ts->tm_year + 1900) && month > (ts->tm_mon) && month > 0 && month <= 12) {
+			cout << "Введите день: ";
+			cin >> day;
+			if (day < 0 || day > 31) {
+				cout << "Не правильный день" << endl;
+				Data();
+			}
+			else {
+				cout << "Введите часы: ";
+				cin >> hour;
+				if (hour < 0 || hour > 23) {
+					cout << "Не правильный час" << endl;
+					Data();
+
+				}
+				else {
+					cout << "Введите минуты: ";
+					cin >> minute;
+					if (minute < 0 || minute > 59) {
+						cout << "Не правильная минута" << endl;
+						Data();
+					}
+					else {
+						cout << "Введите секунды: ";
+						cin >> sec;
+						if (sec < 0 || sec > 59) {
+							cout << "Не правильная cекунда" << endl;
+							Data();
+						}
+					}
+				}
+
+			}
+
+		}
+
+	}
+	if (month < 10) { // месяц
+		std::ofstream out;         
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-" << "0" << month << "-" << day << " " << hour << ":" << minute << ":" << sec << endl;
+		}
+	}
+	if (hour < 10) { // Часы
+		std::ofstream out;         
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-" << month << "-" << day << " " << "0" << hour << ":" << minute << ":" << sec << endl;
+		}
+	}
+	if (minute < 10) { // Минуты
+		std::ofstream out;         
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-" << month << "-" << day << " " << hour << ":" << "0" << minute << ":" << sec << endl;
+		}
+	}
+	if (sec < 10) { // Секунды
+		std::ofstream out;         
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-" << month << "-" << day << " " << hour << ":" << minute << ":" << "0" << sec << endl;
+		}
+	}
+	if (day < 10) { // Дни
+		std::ofstream out;          
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-" << month << "-" << "0" << day << " " << hour << ":" << minute << ":" << sec << endl;
+		}
+	}
+	if (month < 10 and day < 10) { // Месяц дни
+		std::ofstream out;         
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-" << "0" << month << "-" << "0" << day << " " << hour << ":" << minute << ":" << sec << endl;
+		}
+	}
+	if (month < 10 and hour < 10) { // Месяц часы
+		std::ofstream out;          
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-" << "0" << month << "-" << day << " " << "0" << hour << ":" << minute << ":" << sec << endl;
+		}
+	}
+	if (month < 10 && minute < 10) { // месяц минуты
+		std::ofstream out;        
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-" << "0" << month << "-" << day << " " << hour << ":" << "0" << minute << ":" << sec << endl;
+		}
+	}
+	if (month < 10 and sec < 10) { // Месяц секунды
+		std::ofstream out;         
+		out.open("temp.txt");
+		if (out.is_open())
+		{
+			out << year << "-" << "0" << month << "-" << day << " " << hour << ":" << minute << ":" << "0" << sec << endl;
+		}
+	}
+	if (day < 10 and hour < 10) { // день часы 
+		std::ofstream out;          
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-"  << month << "-" << "0" << day << " " << "0" << hour << ":" << minute << ":" << sec << endl;
+		}
+	}
+	if (day < 10 and minute < 10) { // день минуты 
+		std::ofstream out;         
+		out.open("temp.txt"); 
+		if (out.is_open())
+		{
+			out << year << "-" << month << "-" << "0" << day << " " << hour << ":" << "0" << minute << ":" << sec << endl;
+		}
+	}
+	if (day < 10 and sec < 10) { // день секунды
+		std::ofstream out;          
+		out.open("temp.txt");
+		if (out.is_open())
+		{
+			out << year << "-" << month << "-" << "0" << day << " " << hour << ":" <<  minute << ":" << "0" << sec << endl;
+		}
+	}
+	if (hour < 10 and  minute < 10) { // Часы минуты
+		std::ofstream out;         
+		out.open("temp.txt");
+		if (out.is_open())
+		{
+			out << year << "-" << month << "-"  << day << " " << "0" << hour << ":" << "0" << minute << ":"  << sec << endl;
+		}
+	}
+	if (hour < 10 and sec < 10) { // Часы секунды
+	std::ofstream out;         
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-" << month << "-" << day << " " << "0" << hour << ":"  << minute << ":" << "0" << sec << endl;
+	}
+	}
+	 if (minute < 10 and sec < 10) { // Минуты секунды
+	std::ofstream out;         
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-" << month << "-" << day << " "  << hour << ":" << "0" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (month < 10 and day < 10 and hour < 10) { // месяц день часы 
+	std::ofstream out;          
+	out.open("temp.txt"); 
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << "0" << day << " " << "0" << hour << ":"  << minute << ":"  << sec << endl;
+	}
+	}
+	if (month < 10 and day < 10 and minute < 10) { // месяц день минуты 
+	std::ofstream out;         
+	out.open("temp.txt"); 
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << "0" << day << " "  << hour << ":" << "0" << minute << ":" << sec << endl;
+	}
+	}
+	if (month < 10 && day < 10 and sec < 10) { // месяц день секунды
+	std::ofstream out;         
+	out.open("temp.txt"); 
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << "0" << day << " " << hour << ":"  << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (month < 10 && hour < 10 and minute < 10) { // месяц часы минуты
+	std::ofstream out;        
+	out.open("temp.txt"); 
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << day << " " << "0" << hour << ":" << "0" << minute << ":"  << sec << endl;
+	}
+	}
+	if (month < 10 && hour < 10 and sec < 10) { // месяц часы секунды 
+	std::ofstream out;          
+	out.open("temp.txt"); 
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << day << " " << "0" << hour << ":" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (month < 10 && minute < 10 and sec < 10) { // месяц минуты секунды
+	std::ofstream out;         
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << day << " "  << hour << ":" << "0" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	 if (day < 10 && hour < 10 and minute < 10) { // день часы минуты
+	std::ofstream out;         
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-" << month << "-" << "0" << day << " " << "0" << hour << ":" << "0" << minute << ":"  << sec << endl;
+	}
+	}
+	if (day < 10 && hour < 10 and sec < 10) { // день часы секкунды
+	std::ofstream out;        
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-" << month << "-" << "0" << day << " " << "0" << hour << ":"  << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (day < 10 && minute < 10 and sec < 10) { // день минуты секунды
+	std::ofstream out;         
+	out.open("temp.txt"); 
+	if (out.is_open())
+	{
+		out << year << "-" << month << "-" << "0" << day << " "  << hour << ":" << "0" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (day < 10 && minute < 10 and sec < 10) { // часы минуты секунды
+	std::ofstream out;        
+	out.open("temp.txt"); 
+	if (out.is_open())
+	{
+		out << year << "-" << month << "-" << day << " " << "0" << hour << ":" << "0" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (day < 10 && minute < 10 and hour < 10 && minute < 10) { // месяц день часы минуты
+	std::ofstream out;        
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << "0" << day << " " << "0" << hour << ":" << "0" << minute << ":"  << sec << endl;
+	}
+	}
+	if (day < 10 && minute < 10 and hour < 10 && minute < 10) { // месяц день часы секунды
+	std::ofstream out;         
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << "0" << day << " " << "0" << hour << ":" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (day < 10 && minute < 10 and hour < 10 && minute < 10) { // месяц день минуты секунды
+	std::ofstream out;          
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << "0" << day << " "  << hour << ":" << "0" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (day < 10 && minute < 10 and hour < 10 && minute < 10) { // месяц часы минуты секунды
+	std::ofstream out;          
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-"  << day << " " << "0" << hour << ":" << "0" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (day < 10 && minute < 10 and hour < 10 && minute < 10) { // день часы минуты секунды
+	std::ofstream out;         
+	out.open("temp.txt");
+	if (out.is_open())
+	{
+		out << year << "-"  << month << "-" << "0" << day << " " << "0" << hour << ":" << "0" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if (day < 10 && month < 10 and hour < 10 && minute < 10 && sec < 10) { // день часы минуты секунды месяца
+	std::ofstream out;         
+	out.open("temp.txt"); 
+	if (out.is_open())
+	{
+		out << year << "-" << "0" << month << "-" << "0" << day << " " << "0" << hour << ":" << "0" << minute << ":" << "0" << sec << endl;
+	}
+	}
+	if(day >= 10 && month >= 10 and hour >= 10 && minute >= 10 && sec >= 10) {
+	std::ofstream out;         
+	out.open("temp.txt"); 
+	if (out.is_open())
+	{
+		out << year << "-" << month << "-" << day << " " << hour << ":" << minute << ":" << sec << endl;
+	}
+}
+
+
+		
+	
+	
+	
+	
+	return true;
+}
 bool add() {
 	string type, content, time;
+	
 	cout << "Выберите тип операции:\n1) Запустить приложение\n2) Включить напоминаниe\n3) Включить звуковое оповещение\n4)Остановить программу" << endl;
 	cout << "Ваш выбор: ";
 	int key = 0;
@@ -27,35 +435,51 @@ bool add() {
 		type = "load";
 		cout << "Введите полный путь к исполняемому файлу: ";
 		cin >> content;
-		cout << "Введите дату в формате [20.07.2015 18:30:25]:";
-		cin >> time;
+		cout << "Введите дату в формате [2022-07-08 18:30:25]:";
+		cout << endl;
+		Data();
+		
 	}
 	else if(key == 2){
 		type = "message";
 		cout << "Введите текст уведомления: ";
 		cin >> content;
-		cout << "Введите дату в формате [20.07.2015 18:30:25]:";
-		cin >> time;
+		cout << "Введите дату в формате [2022-07-08 18:30:25]:";
+		cout << endl;
+		Data();
 	}
 	else if (key == 3) {
 		type = "sound";
 		cout << "Введите количество уведомлений: ";
 		cin >> content;
-		cout << "Введите дату в формате [20.07.2015 18:30:25]:";
-		cin >> time;
+		cout << "Введите дату в формате [2022-07-08 18:30:25]:";
+		cout << endl;
+		Data();
 	}
 	else if (key == 4) {
 		type = "close";
 		cout << "Введите количество уведомлений: ";
 		cin >> content;
-		cout << "Введите дату в формате [20.07.2015 18:30:25]:";
-		cin >> time;
+		cout << "Введите дату в формате [2022-07-08 18:30:25]:";
+		cout << endl;
+		Data();
+	}
+	std::string line;
+	string line2;
+	std::ifstream in("temp.txt"); // окрываем файл для чтения
+	if (in.is_open())
+	{
+		while (getline(in, line))
+		{
+			std::cout << line << std::endl;
+			line2 = line;
+		}
 	}
 	
 	Plan plan;
 	plan.type = type;
 	plan.content = content;
-	plan.time = time;
+	plan.time = line2;
 	json object;
 	
 	object["type"] = plan.type;
