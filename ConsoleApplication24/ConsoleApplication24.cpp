@@ -432,7 +432,7 @@ bool add() {
 	int key = 0;
 	cin >> key;
 	if (key == 1) {
-		type = "load";
+		type = "Load";
 		cout << "Введите полный путь к исполняемому файлу: ";
 		cin >> content;
 		cout << "Введите дату в формате [2022-07-08 18:30:25]:";
@@ -441,28 +441,16 @@ bool add() {
 		
 	}
 	else if(key == 2){
-		type = "message";
+		type = "Message";
 		cout << "Введите текст уведомления: ";
 		cin >> content;
 		cout << "Введите дату в формате [2022-07-08 18:30:25]:";
 		cout << endl;
 		Data();
 	}
-	else if (key == 3) {
-		type = "sound";
-		cout << "Введите количество уведомлений: ";
-		cin >> content;
-		cout << "Введите дату в формате [2022-07-08 18:30:25]:";
-		cout << endl;
-		Data();
-	}
-	else if (key == 4) {
-		type = "close";
-		cout << "Введите количество уведомлений: ";
-		cin >> content;
-		cout << "Введите дату в формате [2022-07-08 18:30:25]:";
-		cout << endl;
-		Data();
+	else {
+		system("cls");
+		add();
 	}
 	std::string line;
 	string line2;
@@ -504,7 +492,7 @@ bool see() {
 		string content = object["content"].get<string>();
 		string time = object["time"].get<string>();
 		i++;
-		cout << "Задача " << i << ":" << "Тип: " << type << " Содержимое: " << content << " Время выполнения: " << time << ";" << endl;
+		//cout << "Задача " << i << ":" << "Тип: " << type << " Содержимое: " << content << " Время выполнения: " << time << ";" << endl;
 		
 	}
 
@@ -542,7 +530,7 @@ bool deleted() {
 }
 
 bool settings() {
-	cout << "Вы вошли в настройки. Доступные настройки:\n1) Посмотреть все поставленные задачи\n2) Удалить задачу\n3) Добавить задачу\nЗакрыть приложение" << endl;
+	cout << "Вы вошли в настройки. Доступные настройки:\n1) Посмотреть все поставленные задачи\n2) Удалить задачу\n3) Добавить задачу\n4)Закрыть приложение" << endl;
 	int x;
 	int y;
 	cin >> x;
